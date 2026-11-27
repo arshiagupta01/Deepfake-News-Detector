@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Signal / Fiction Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="wordmark" href="#home" aria-label="Signal Fiction Lab home">
+        <span class="mark" aria-hidden="true">S<span>/</span>F</span>
+        <span class="wordmark-copy">Signal<br>Fiction Lab</span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <a class="nav-link is-active" href="#generator"><span class="nav-number">01</span>Headline studio</a>
+        <a class="nav-link" href="#analyzer"><span class="nav-number">02</span>Fact-check lookup</a>
+        <a class="nav-link" href="#method"><span class="nav-number">03</span>How it works</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="ethical-note">
+          <span class="note-mark" aria-hidden="true">!</span>
+          <p>All generated stories are fictional. This demo does not verify facts.</p>
+        </div>
+        <span class="version-label">EDUCATION BUILD <span>·</span> 0.1</span>
+      </div>
+    </aside>
+
+    <main id="home" class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>LAB</span><span class="crumb-slash">/</span> RESPONSIBLE AI</div>
+        <div id="service-status" class="demo-status"><span class="status-dot"></span><span id="status-text">CHECKING FACT-CHECK SOURCE</span></div>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A MISINFORMATION LITERACY TOOL</p>
+          <h1 id="page-title">Signal <span>/</span><br>Fiction Lab</h1>
+          <p class="intro-text">Generate clearly fictional examples, or look up existing fact-check reviews and inspect their sources.</p>
+        </div>
+        <div class="intro-index" aria-hidden="true">
+          <span class="index-orbit orbit-one"></span>
+          <span class="index-orbit orbit-two"></span>
+          <span class="index-core">S<br><span>/</span><br>F</span>
+          <span class="index-caption">CREATE<br>·<br>QUESTION</span>
+        </div>
+      </section>
+
+      <div class="workspace-grid">
+        <section id="generator" class="panel generator-panel" aria-labelledby="generator-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow panel-kicker">01 <span>/</span> CONTROLLED GENERATION</p>
+              <h2 id="generator-title">Headline studio</h2>
+            </div>
+            <span class="sim-tag" id="generator-badge">GPT-2 · NOT LOADED</span>
+          </div>
+
+          <p class="panel-description">GPT-2 writes fictional, low-stakes headlines using an invented setting and a fixed theme. Outputs are filtered and labeled as fiction.</p>
+
+          <div class="form-row">
+            <label for="setting-select">Invented setting</label>
+            <select id="setting-select">
+              <option value="cloud-harbor">Cloud Harbor</option>
+              <option value="mosslight">Mosslight Valley</option>
+              <option value="bellwether">Bellwether Bay</option>
+              <option value="starling">Starling Station</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="theme-select">Story theme</label>
+            <select id="theme-select">
+              <option value="curiosity">Curious discovery</option>
+              <option value="community">Community life</option>
+              <option value="culture">Arts &amp; culture</option>
+            </select>
+          </div>
+
+          <button id="generate-button" class="button button-primary" type="button">
+            <span>Generate with GPT-2</span><span class="button-arrow" aria-hidden="true">&#8599;</span>
+          </button>
+
+          <div class="results-heading">
+            <span>GENERATED HEADLINES</span>
+            <span id="result-count">0 ITEMS</span>
+          </div>
+          <div id="headline-list" class="headline-list" aria-live="polite" aria-relevant="additions text">
+            <div class="empty-state">
+              <span class="empty-icon" aria-hidden="true">+</span>
+              <span>Your fictional set will appear here.</span>
+            </div>
+          </div>
+          <p class="generator-footnote"><span aria-hidden="true">i</span> Headlines are invented examples, not news. Select one to search for related fact-check reviews.</p>
+        </section>
+
+        <section id="analyzer" class="panel analyzer-panel" aria-labelledby="analyzer-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow panel-kicker">02 <span>/</span> SOURCE-BACKED LOOKUP</p>
+              <h2 id="analyzer-title">Fact-check lookup</h2>
+            </div>
+            <span class="sim-tag" id="fact-check-badge">GOOGLE · SETUP REQUIRED</span>
+          </div>
+
+          <p class="panel-description">Search existing reviews indexed by Google Fact Check Explorer. Read the publisher's rating and review; related search results are not an automatic verdict.</p>
+
+          <label class="visually-hidden" for="headline-input">Claim or headline to search</label>
+          <textarea id="headline-input" minlength="8" maxlength="240" placeholder="Paste a claim or headline to search..." spellcheck="true"></textarea>
+          <div class="input-meta"><span>UP TO 240 CHARACTERS</span><span id="char-count">0 / 240</span></div>
+
+          <button id="analyze-button" class="button button-dark" type="button">
+            <span>Find existing fact-checks</span><span class="button-arrow" aria-hidden="true">&#8594;</span>
+          </button>
+
+          <div id="analysis-result" class="analysis-result" aria-live="polite">
+            <div class="result-placeholder">
+              <span class="placeholder-rule"></span>
+              <p>Results will show the claim text, fact-check publisher, their rating, and a link to the original review. No match does not mean true.</p>
+            </div>
+          </div>
+
+          <div class="classifier-tools">
+            <div class="classifier-heading">
+              <p class="eyebrow panel-kicker">EXPERIMENTAL MODEL SIGNAL</p>
+              <span class="sim-tag" id="classifier-badge">ROBERTA · NOT LOADED</span>
+            </div>
+            <p class="classifier-description">RoBERTa is BERT-family and was trained on full news articles. This headline-only prediction is uncalibrated and must not be treated as a truth verdict.</p>
+            <button id="classify-button" class="button button-outline" type="button">
+              <span>Run experimental classifier</span><span class="button-arrow" aria-hidden="true">&#8594;</span>
+            </button>
+            <div id="classification-result" class="classification-result" aria-live="polite">
+              <p class="classifier-placeholder">The model signal will appear separately from source-backed review results.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section id="method" class="method-strip" aria-labelledby="method-title">
+        <div class="method-title-block">
+          <p class="eyebrow panel-kicker">03 <span>/</span> TRANSPARENCY</p>
+          <h2 id="method-title">What is running?</h2>
+        </div>
+        <div class="model-block">
+          <span class="model-stage">GENERATION</span>
+          <strong>GPT-2</strong>
+          <span class="model-state" id="generator-model-state"><span class="state-dot"></span> Checking backend</span>
+        </div>
+        <div class="model-block">
+          <span class="model-stage">EVIDENCE LOOKUP</span>
+          <strong>Google ClaimReview</strong>
+          <span class="model-state" id="fact-check-model-state"><span class="state-dot"></span> Checking API key</span>
+        </div>
+        <p class="method-disclosure">Ratings come from the cited fact-check publisher. Coverage is incomplete; no result is not evidence that a claim is accurate. GPT-2 is used only for fictional examples.</p>
+      </section>
+
+      <footer class="page-footer">
+        <span>BUILT FOR CRITICAL THINKING</span>
+        <span>PAUSE BEFORE YOU SHARE <span class="footer-mark">&#8599;</span></span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
